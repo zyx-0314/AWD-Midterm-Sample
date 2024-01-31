@@ -1,0 +1,726 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --dark-bg: linear-gradient(-135deg, #000000 0%, #414141 100%);
+    --light-bg: linear-gradient(-135deg, #ffffff83 0%, #eaeaea98 100%);
+    --dark-font: #404040;
+    --light-font: #dbdbdb;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: aqua;
+}
+
+button,
+a {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #000;
+    cursor: pointer;
+
+    &.underlineEffect {
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding: 0.5rem 0.3rem;
+        background: transparent;
+        overflow: hidden;
+        border-radius: 0;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0.1em;
+            background-color: black;
+            opacity: 0;
+            animation: underlineOut 0.2s ease-in-out forwards;
+        }
+
+        &:hover::after,
+        &:focus::after {
+            animation: underlineIn 0.2s ease-in-out forwards;
+        }
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-font);
+}
+
+ul {
+    list-style: none;
+}
+
+.button {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+
+    &.accent {
+        background-color: transparent;
+        color: var(--light-font);
+        border: 2px solid white;
+        cursor: pointer;
+        box-shadow: 0 5px 0 white;
+        transition: all 0.2s ease;
+        transform: translate(0, -5px);
+
+        &:hover {
+            transform: translate(0);
+            color: black;
+            background-color: white;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.7);
+        }
+    }
+    &.disable {
+        transform: translate(0);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.7);
+        color: rgba(211, 211, 211, 0.526);
+        border: 2px solid rgba(211, 211, 211, 0.47);
+        cursor: not-allowed;
+    }
+}
+
+.heading {
+    position: fixed;
+    margin-bottom: 1rem;
+    height: 8%;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    top: 0;
+    justify-content: space-between;
+    background-color: rgba(245, 245, 245, 0.7);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        color: white;
+
+        button {
+            transition: all 0.3s ease-in-out;
+            color: white;
+
+            &::after {
+                background-color: white;
+            }
+        }
+    }
+
+    .companyName {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .logo {
+            height: 2rem;
+            width: 2rem;
+            margin-right: 1rem;
+        }
+
+        font-size: 1.4rem;
+
+        span {
+            font-size: 1rem;
+        }
+    }
+
+    .navButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+
+        .navButton {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+    }
+
+    .otherNavButtons {
+        display: flex;
+        flex-direction: row;
+
+        .otherNavButton {
+            font-weight: 400;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            &.menuEffect {
+                padding: 0.5rem 0.7rem;
+                border: 2px solid transparent;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                    border: white 2px solid;
+                }
+            }
+        }
+    }
+}
+
+.container {
+    border: 1px solid black;
+}
+
+.footer {
+    border: 1px solid black;
+    height: 15%;
+}
+
+.menu {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    &.active {
+        .menuClose,
+        .menuContainer {
+            animation: fallIn 0.3s ease-in-out forwards;
+        }
+
+        .displayContainer {
+            animation: riseIn 0.3s ease-in-out forwards;
+        }
+    }
+
+    &.inactive {
+        .menuClose,
+        .menuContainer {
+            animation: riseOut 0.2s ease-in-out forwards;
+        }
+
+        .displayContainer {
+            animation: fallOut 0.2s ease-in-out forwards;
+        }
+
+        &.hide {
+            display: none;
+        }
+    }
+
+    .menuClose {
+        position: absolute;
+        top: 2rem;
+        right: 2.5rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 200;
+        color: white;
+    }
+
+    .displayContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        height: 100vh;
+        width: 70%;
+        background: #565656;
+
+        &.ourFleet {
+            background: url("https://wallpaperaccess.com/full/1538167.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.gearGuys {
+            background: url("https://wallpapercave.com/wp/wp8664412.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.gearShop {
+            background: url("https://www.bhmpics.com/downloads/car-mechanic-wallpaper/2.thumb-1920-1166483.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.spaces {
+            background: url("https://cdn.wallpapersafari.com/2/43/w3rBVS.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.experience {
+            background: url("https://wallpapercave.com/wp/wp9977855.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.stories {
+            background: url("https://plus.unsplash.com/premium_photo-1661284832790-b49f8a251cd7?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZXhwbG9yZXxlbnwwfHwwfHx8MA%3D%3D");
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.supportServices {
+            background: url("https://st3.depositphotos.com/1003697/17346/i/450/depositphotos_173468930-stock-photo-call-center-operators.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        &.ourCompany {
+            background: url("https://wallpaper.dog/large/20536430.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .signInContainer {
+            transform: translateY(35rem);
+            opacity: 0;
+        }
+
+        &.signIn {
+            background: url("https://www.imageshine.in/uploads/gallery/road-between-mountains-wallpaper-4k-for-pc.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: blur(2px), brightness(0.8);
+
+            .signInContainer {
+                transition: all 0.3s ease-in-out;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 30rem;
+                width: 25rem;
+                opacity: 1;
+                transform: translateY(0);
+
+                &.signUp {
+                    height: 55rem;
+                    width: 30rem;
+                }
+
+                .topCard {
+                    padding-top: 2rem;
+                    background: rgba(7, 7, 7, 0.592);
+                    backdrop-filter: blur(10px);
+                    border-radius: 1rem;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.7);
+                    z-index: 1;
+                    padding: 2rem 0.5rem;
+                    overflow: hidden;
+
+                    .header {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 1rem;
+                        align-self: flex-start;
+                        position: relative;
+                        color: white;
+                    }
+
+                    .signInElements {
+                        transform: translateX(-30rem);
+                    }
+
+                    .signUpElements {
+                        transform: translateX(30rem);
+                    }
+
+                    .signInElements,
+                    .signUpElements {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 0.5rem;
+                        opacity: 0;
+                        transition: all 0.3s ease-in-out;
+                        display: flex;
+
+                        &.active {
+                            opacity: 1;
+                            transform: translateX(0);
+                        }
+
+                        .instruction {
+                            font-size: 0.9rem;
+                            font-weight: 600;
+                            width: 80%;
+                            text-align: center;
+                            margin-bottom: 0.5rem;
+                            margin-top: 0.5rem;
+                            transform: translateY(-1rem);
+                            color: white;
+
+                            .warning {
+                                color: rgb(255, 0, 123);
+                                &.active {
+                                    color: palegreen;
+                                }
+                            }
+
+                            &.disable {
+                                display: none;
+                            }
+                        }
+
+                        .captchaCode {
+                            font-size: 2rem;
+                            text-align: center;
+                            font-weight: 600;
+                            color: white;
+                        }
+
+                        .captchaContainer {
+                            border: 2px solid white;
+                            border-radius: 0.5rem;
+                            padding: 0.5rem 1rem;
+                            margin: 1rem 0;
+                            width: 80%;
+
+                            .group {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                margin-bottom: 1.5rem;
+
+                                i {
+                                    font-size: 2rem;
+                                    margin-right: 0.5rem;
+                                    border: 1px solid white;
+                                    padding: 0.5rem;
+                                    border-radius: 0.5rem;
+                                    background: transparent;
+                                    cursor: pointer;
+                                    color: white;
+                                    transition: all 0.2s ease-in-out;
+                                    transform: translate(0, -5px);
+                                    box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.7);
+
+                                    &:hover {
+                                        background: white;
+                                        color: black;
+                                        transform: translate(5px, 0);
+                                        box-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+                                    }
+                                }
+                            }
+
+                            &.disable {
+                                border: 1px solid rgba(211, 211, 211, 0.47);
+                                cursor: not-allowed;
+
+                                .group {
+                                    i {
+                                        color: rgba(211, 211, 211, 0.526);
+                                        border: 1px solid rgba(211, 211, 211, 0.47);
+                                        cursor: not-allowed;
+                                        transform: translate(5px, 0);
+                                        box-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+
+                                        &:hover {
+                                            background: transparent;
+                                            color: rgba(211, 211, 211, 0.526);
+                                        }
+                                    }
+                                }
+
+                                .captchaCode {
+                                    color: rgba(211, 211, 211, 0.526);
+                                }
+
+                                .instruction {
+                                    color: rgba(211, 211, 211, 0.526);
+                                }
+
+                                input {
+                                    color: rgba(211, 211, 211, 0.526);
+                                    cursor: not-allowed;
+                                    transform: translate(5px, 0);
+                                    box-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+                                }
+                            }
+                        }
+
+                        .username,
+                        .password,
+                        .email,
+                        .captcha {
+                            font-size: 1rem;
+                            outline: none;
+                            border: none;
+                            border-bottom: 1px solid white;
+                            background: transparent;
+                            padding: 1rem 0.2rem;
+                            background: transparent;
+                            min-width: 80%;
+                            cursor: pointer;
+                            color: white;
+
+                            &::-ms-reveal {
+                                filter: invert(100%);
+                            }
+
+                            &:focus {
+                                cursor: text;
+
+                                & + .labelName {
+                                    color: rgb(203, 203, 203);
+                                    transform: translateY(-4rem) scale(4);
+                                }
+                            }
+
+                            &.active + .labelName {
+                                color: rgb(203, 203, 203);
+                                transform: translateY(-4rem) scale(4);
+                            }
+
+                            &.disable {
+                                border-bottom: 1px solid rgba(211, 211, 211, 0.47);
+                                cursor: not-allowed;
+
+                                & + .labelName {
+                                    color: rgba(211, 211, 211, 0.526);
+                                    transform: translateY(-4rem) scale(4);
+
+                                    & + .instruction {
+                                        color: rgba(211, 211, 211, 0.526);
+                                    }
+                                }
+                            }
+                        }
+
+                        .labelName {
+                            transition: all 0.2s ease-in-out;
+                            font-size: 0.2rem;
+                            font-weight: 600;
+                            transform: translateY(-2.5rem) scale(7);
+                            cursor: pointer;
+                            color: white;
+
+                            &:hover {
+                                color: rgb(203, 203, 203);
+                            }
+
+                            .indicator {
+                                .fa-circle-check {
+                                    display: none;
+                                    color: palegreen;
+
+                                    &.active {
+                                        display: contents;
+                                    }
+                                }
+
+                                .fa-circle-xmark {
+                                    display: none;
+                                    color: palevioletred;
+
+                                    &.active {
+                                        display: contents;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .error {
+                        color: red;
+                        font-size: 0.8rem;
+                        font-weight: 700;
+                        opacity: 0;
+
+                        &.active {
+                            opacity: 1;
+                        }
+                    }
+
+                    .subfunctions {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                        align-items: center;
+                        width: 100%;
+                        margin-top: 1rem;
+                        font-size: 0.8rem;
+
+                        .rememberMe {
+                            display: block;
+
+                            .labelName {
+                                font-size: 0.8rem;
+                            }
+
+                            &:hover {
+                                .labelName {
+                                    color: rgb(203, 203, 203);
+                                }
+                            }
+                        }
+
+                        .forgotPassword a {
+                            font-size: 0.8rem;
+                            font-weight: 600;
+                            text-decoration: none;
+                            color: white;
+                            transition: color 0.1s ease-in-out;
+                            background: transparent;
+
+                            &:hover {
+                                color: rgb(203, 203, 203);
+                            }
+                        }
+                    }
+                }
+
+                .bottomCard {
+                    display: flex;
+                    gap: 2rem;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    color: white;
+                    z-index: 0;
+
+                    .button {
+                        background: rgba(0, 0, 0, 0.2);
+                        backdrop-filter: blur(10px);
+                        padding: 1rem 2rem;
+                        border-radius: 0 0 0.5rem 0.5rem;
+                        cursor: pointer;
+                        transform: translateY(-6px);
+                        transition: all 0.2s ease-in-out;
+
+                        &:hover {
+                            transform: translateY(1px) scale(1.01);
+                            background: rgba(0, 0, 0, 0.5);
+                            backdrop-filter: blur(5px);
+                        }
+
+                        &.active {
+                            transform: translateY(1px) scale(1.01);
+                            background: rgba(0, 0, 0, 0.5);
+                            backdrop-filter: blur(5px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .menuContainer {
+        display: flex;
+        flex-direction: column;
+        /* gap: 2rem; */
+        width: 30%;
+        height: 100vh;
+        background-color: rgb(41, 41, 41);
+        padding: 6rem;
+        justify-content: space-around;
+        font-size: 1.8rem;
+        font-weight: 600;
+
+        a {
+            transition: color 0.2s ease-in-out;
+            color: rgb(185, 185, 185);
+            width: fit-content;
+
+            &:hover {
+                color: white;
+            }
+
+            &::after {
+                background-color: white;
+            }
+        }
+
+        .sub {
+            font-size: 1.5rem;
+            font-weight: 550;
+        }
+    }
+}
+
+@keyframes underlineIn {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0%, 0, 0);
+    }
+}
+
+@keyframes underlineOut {
+    0% {
+        opacity: 1;
+        transform: translate3d(0%, 0, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes fallOut {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes riseOut {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes fallIn {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes riseIn {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}

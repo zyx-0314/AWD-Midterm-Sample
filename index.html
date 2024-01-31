@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Velocity Motors Inc.</title>
+        <link rel="icon" href="./Assets/Images/Logo-smaller.png" />
+        <link rel="stylesheet" href="./Assets/CSS/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <nav class="heading" id="_heading">
+            <div class="companyName" id="_comapnyName">
+                <img src="./Assets/Images/Logo-smaller.png" alt="" srcset="" class="logo" />
+                <h1>Velocity Motors <span>Inc.</span></h1>
+            </div>
+            <div class="navButtons" id="_navButtons">
+                <button class="navButton underlineEffect" id="_navButton1">Apter</button>
+                <button class="navButton underlineEffect" id="_navButton2">Captor</button>
+                <button class="navButton underlineEffect" id="_navButton3">Rapt-r</button>
+                <button class="navButton underlineEffect" id="_navButton3">Fleet</button>
+                <button class="navButton underlineEffect" id="_navButton3">GearGuys</button>
+            </div>
+            <div class="otherNavButtons" id="_otherNavButtons">
+                <button class="otherNavButton underlineEffect" id="_otherNavButton1">Login</button>
+                <button class="otherNavButton menuEffect" id="_menuButton">
+                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="container" id="_container">loob</div>
+        <footer class="footer" id="footer">asd</footer>
+        <div class="menu inactive hide" id="_menu">
+            <div class="displayContainer" id="_displayContainer">
+                <div class="signInContainer">
+                    <div class="topCard">
+                        <h3 class="header">Sign In</h3>
+                        <form action="" class="signInElements active">
+                            <input type="text" name="username" id="_username" class="username" aria-label="username" />
+                            <label for="username" id="_label" class="labelName">
+                                <span class="labelContent">Username / Email</span>
+                            </label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="_password"
+                                class="password"
+                                aria-label="password"
+                            />
+                            <label for="password" id="_label" class="labelName">
+                                <span class="labelContent">Password</span>
+                            </label>
+
+                            <div class="subfunctions">
+                                <div class="rememberMe">
+                                    <input type="checkbox" name="rememberMe" id="_rememberMe" aria-label="rememberMe" />
+                                    <label for="rememberMe" id="_rememberMeLabel" class="labelName">
+                                        <span class="labelContent">Remember Me</span>
+                                    </label>
+                                </div>
+                                <div class="forgotPassword">
+                                    <a href="#">Forgot Password?</a>
+                                </div>
+                            </div>
+
+                            <div class="error">error</div>
+
+                            <div class="button accent">Sign In</div>
+                        </form>
+                        <form action="" class="signUpElements hide">
+                            <input
+                                type="text"
+                                name="newUsername"
+                                id="_newUsername"
+                                class="username"
+                                aria-label="newUsername"
+                            />
+                            <label for="email" id="_label" class="labelName">
+                                <span class="labelContent">Username</span>
+                            </label>
+                            <input type="email" name="newEmail" id="_newEmail" class="email" aria-label="newEmail" />
+                            <label for="newEmail" id="_label" class="labelName">
+                                <span class="labelContent">Email</span>
+                            </label>
+                            <input
+                                type="Password"
+                                name="newPassword"
+                                id="_newPassword"
+                                class="password"
+                                aria-label="newPassword"
+                            />
+                            <label for="newPassword" id="_labelNewPassword" class="labelName">
+                                <span class="labelContent">Password</span>
+                                <span class="indicator">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                    <i class="fa-regular fa-circle-xmark" id="_unmatch"></i>
+                                </span>
+                            </label>
+                            <p class="instruction">
+                                Password must be
+                                <span class="warning active" id="_lengthWarning">at least 8 characters long</span>,
+                                contain at least
+                                <span class="warning active" id="_upperCaseWarning">1 uppercase letter</span>,
+                                <span class="warning active" id="_lowerCaseWarning">1 lowercase letter</span>,
+                                <span class="warning active" id="_numberWarning">1 number</span>, and
+                                <span class="warning active" id="_specialWarning">1 special character</span>.
+                            </p>
+                            <input
+                                type="Password"
+                                name="confirmationPassword"
+                                id="_confirmationPassword"
+                                class="password disable"
+                                aria-label="confirmationPassword"
+                                disabled
+                            />
+                            <label for="confirmationPassword" id="_labelConfirmationPassword" class="labelName">
+                                <span class="labelContent">Confirmation Password</span>
+                                <span class="indicator">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                    <i class="fa-regular fa-circle-xmark" id="_unmatch"></i>
+                                </span>
+                            </label>
+                            <p class="instruction">Please re-enter your password.</p>
+                            <div class="captchaContainer disable" id="_captchaContainer">
+                                <p id="_captchaCode" class="captchaCode">Captcha</p>
+                                <div class="group">
+                                    <input
+                                        type="text"
+                                        name="captcha"
+                                        id="_captchaInput"
+                                        class="captcha"
+                                        aria-label="captcha"
+                                        disabled
+                                    />
+                                    <div class="button" id="_captchaReset">
+                                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <p class="instruction">
+                                    Please enter the captcha code shown above to verify that you are not a robot.
+                                </p>
+                            </div>
+
+                            <div class="button disable" id="_signUpBtn">Sign Up</div>
+                        </form>
+                    </div>
+
+                    <div class="bottomCard" id="_bottomCard">
+                        <div class="button active" id="_signIn">Sign In</div>
+                        <div class="button" id="_signUp">Sign Up</div>
+                    </div>
+                </div>
+            </div>
+            <ul class="menuContainer" id="_menuContainer"></ul>
+            <div class="menuClose" id="_menuButton">X</div>
+        </div>
+
+        <script src="./Assets/JS/button.js"></script>
+        <script src="./Assets/JS/navigationSelection.js"></script>
+        <script src="./Assets/JS/inputEffect.js"></script>
+        <script src="./Assets/JS/checking.js"></script>
+        <!-- Save -->
+    </body>
+</html>
